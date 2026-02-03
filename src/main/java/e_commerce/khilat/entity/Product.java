@@ -24,13 +24,26 @@ public class Product {
 
     private Integer stock;
 
-    @Column(name = "is_active")
-    private Boolean isActive;
-    
-    @Column(name = "is_trending")
-    private Boolean trending;
+    @Column(name = "trending", length = 1)
+    private String trending;
 
-    @Column(name = "created_at")
+
+	public String getTrending() {
+		return trending;
+	}
+
+	public void setTrending(String trending) {
+		this.trending = trending;
+	}
+
+	@Column(name = "is_active")
+	private Boolean isActive;
+
+	public Boolean getIsActive() { return isActive; }
+	public void setIsActive(Boolean isActive) { this.isActive = isActive; }
+
+	
+	@Column(name = "created_at")
     private LocalDateTime createdAt;
 
 	public Long getId() {
@@ -81,13 +94,6 @@ public class Product {
 		this.stock = stock;
 	}
 
-	public Boolean getIsActive() {
-		return isActive;
-	}
-
-	public void setIsActive(Boolean isActive) {
-		this.isActive = isActive;
-	}
 
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
@@ -100,6 +106,6 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", category=" + category + ", name=" + name + ", description=" + description
-				+ ", price=" + price + ", stock=" + stock + ", isActive=" + isActive + ",trending=" + trending + ", createdAt=" + createdAt + "]";
+				+ ", price=" + price + ", stock=" + stock + ", trending=" + trending + ", createdAt=" + createdAt + "]";
 	}   
 }

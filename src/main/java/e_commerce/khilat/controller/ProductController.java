@@ -39,8 +39,19 @@ public class ProductController {
 	 
 	 
 
-	  @GetMapping("/trending")
-	    public List<Product> getTrendingProducts() {
-	        return productService.getTrendingProducts();
-	    }
+	 @GetMapping("/trending")
+	 public ResponseEntity<?> getTrendingProducts(
+	         @RequestParam(defaultValue = "8") int limit) {
+
+	     try {
+	         List<Product> trendingProducts = productService.getTrendingProducts(limit);
+	         return ResponseEntity.ok(trendingProducts);
+	     } catch (Exception ex) {
+	         ex.printStackTrace();
+	         return ResponseEntity
+	                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
+	                 .body("Failed to fetch trending products");
+	     }
+	 }
+
 }

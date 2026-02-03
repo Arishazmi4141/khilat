@@ -38,7 +38,8 @@ public class ProductService {
     }
 	
 	   
-	    public List<Product> getTrendingProducts() {
-	        return productRepo.findTrendingProducts(PageRequest.of(0, 8));
-	    }
+    public List<Product> getTrendingProducts(int limit) {
+        Pageable pageable = PageRequest.of(0, limit, Sort.by(Sort.Direction.DESC, "createdAt"));
+        return productRepo.findTrendingProducts(pageable);
+    }
 }

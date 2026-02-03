@@ -20,8 +20,8 @@ public interface ProductRepo extends JpaRepository<Product, Long> {
 	    """)
 	    List<Product> findLatestProducts(Pageable pageable);
 	
-	@Query("SELECT p FROM Product p "
-		       + "WHERE p.trending = 'yes' "
-		       + "ORDER BY p.createdAt DESC")
-		List<Product> findTrendingProducts(Pageable pageable);
+	@Query("SELECT p FROM Product p WHERE p.trending = 'y' ORDER BY p.createdAt DESC")
+	List<Product> findTrendingProducts(Pageable pageable);
+
+
 }
