@@ -1,0 +1,46 @@
+# ========================
+# Maven / Build
+# ========================
+target/
+*.jar
+*.war
+*.ear
+
+# ========================
+# Logs
+# ========================
+*.log
+
+# ========================
+# IDEs
+# ========================
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse / STS
+.project
+.classpath
+.settings/
+
+# VS Code
+.vscode/
+
+# ========================
+# OS files
+# ========================
+.DS_Store
+Thumbs.db
+
+# ========================
+# Spring Boot configs (secrets)
+# ========================
+application-local.properties
+application-prod.properties
+application-dev.properties
+
+# ========================
+# Temp / Cache
+# ========================
+tmp/
+*.swp
