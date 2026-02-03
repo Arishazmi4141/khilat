@@ -26,6 +26,9 @@ public class Product {
 
     @Column(name = "is_active")
     private Boolean isActive;
+    
+    @Column(name = "is_trending")
+    private Boolean trending;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -97,9 +100,6 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", category=" + category + ", name=" + name + ", description=" + description
-				+ ", price=" + price + ", stock=" + stock + ", isActive=" + isActive + ", createdAt=" + createdAt + "]";
-	}
-    
-    
-    
+				+ ", price=" + price + ", stock=" + stock + ", isActive=" + isActive + ",trending=" + trending + ", createdAt=" + createdAt + "]";
+	}   
 }
