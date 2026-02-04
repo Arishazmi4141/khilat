@@ -15,7 +15,8 @@ public interface ProductRepo extends JpaRepository<Product, Long> {
 
 	@Query("""
 	        SELECT p FROM Product p
-	        JOIN FETCH p.category
+	        JOIN FETCH p.category 
+	        LEFT JOIN FETCH p.productImages
 	        ORDER BY p.createdAt DESC
 	    """)
 	    List<Product> findLatestProducts(Pageable pageable);
