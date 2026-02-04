@@ -1,8 +1,15 @@
 package e_commerce.khilat.service;
 
-import org.springframework.stereotype.Service;
+import e_commerce.khilat.entity.Category;
 
-@Service
-public class CategoryService {
 
+import java.util.List;
+
+public interface CategoryService {
+
+    Category addCategory(Category category);
+
+    List<Category> addMultipleCategories(List<Category> categories);
+
+    List<Category> getAllCategories();
 }

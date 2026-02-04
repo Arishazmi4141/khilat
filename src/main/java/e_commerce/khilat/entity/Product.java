@@ -24,7 +24,7 @@ public class Product {
 
     private Integer stock;
 
-    @Column(name = "trending", length = 1)
+    @Column(name = "trending", length = 15)
     private String trending;
 
 
