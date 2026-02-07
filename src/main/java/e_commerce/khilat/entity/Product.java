@@ -22,8 +22,19 @@ public class Product {
     
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
-
     private List<ProductImage> productImages = new ArrayList<>(); 
+    
+    private String name;
+
+    private String description;
+
+    private BigDecimal price;
+
+    private Integer stock;
+    
+    @Column(name = "trending", length = 15)
+    private String trending;
+    
 
     public List<ProductImage> getProductImages() {
 		return productImages;
@@ -32,17 +43,6 @@ public class Product {
 	public void setProductImages(List<ProductImage> productImages) {
 		this.productImages = productImages;
 	}
-
-	private String name;
-
-    private String description;
-
-    private BigDecimal price;
-
-    private Integer stock;
-
-    @Column(name = "trending", length = 15)
-    private String trending;
 
 
 	public String getTrending() {

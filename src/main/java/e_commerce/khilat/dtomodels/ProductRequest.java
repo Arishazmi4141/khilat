@@ -1,36 +1,96 @@
 package e_commerce.khilat.dtomodels;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+import e_commerce.khilat.entity.Category;
+import e_commerce.khilat.entity.ProductImage;
 
 public class ProductRequest {
 
-    private Long categoryId;
-    private String name;
-    private String description;
-    private BigDecimal price;
-    private Integer stock;
-    private Boolean isActive;
-    private String trending; // "y" or "n"
+	private Long categoryId;
 
-    // Getters & Setters
-    public Long getCategoryId() { return categoryId; }
-    public void setCategoryId(Long categoryId) { this.categoryId = categoryId; }
+	private Category category;
+	private String name;
+	private String description;
+	private BigDecimal price;
+	private Integer stock;
+	private String trending; // 'y' or 'n'
+	private Boolean isActive;
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+	private List<ProductImage> productImages = new ArrayList<>();
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+	public List<ProductImage> getProductImages() {
+		return productImages;
+	}
 
-    public BigDecimal getPrice() { return price; }
-    public void setPrice(BigDecimal price) { this.price = price; }
+	public void setProductImages(List<ProductImage> productImages) {
+		this.productImages = productImages;
+	}
 
-    public Integer getStock() { return stock; }
-    public void setStock(Integer stock) { this.stock = stock; }
+	public String getName() {
+		return name;
+	}
 
-    public Boolean getIsActive() { return isActive; }
-    public void setIsActive(Boolean isActive) { this.isActive = isActive; }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getTrending() { return trending; }
-    public void setTrending(String trending) { this.trending = trending; }
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+
+	public Integer getStock() {
+		return stock;
+	}
+
+	public void setStock(Integer stock) {
+		this.stock = stock;
+	}
+
+	public String getTrending() {
+		return trending;
+	}
+
+	public void setTrending(String trending) {
+		this.trending = trending;
+	}
+
+	public Boolean getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Long getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(Long categoryId) {
+		this.categoryId = categoryId;
+	}
+
 }
