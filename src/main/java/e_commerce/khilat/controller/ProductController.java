@@ -62,38 +62,6 @@ public class ProductController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to fetch trending products");
 		}
 	}
-
-	@PostMapping("/add")
-	public ResponseEntity<?> addProduct(@RequestBody ProductRequest request) {
-		try {
-			Product savedProduct = productService.createProduct(request);
-			return ResponseEntity.status(HttpStatus.CREATED).body(savedProduct);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to add product: " + ex.getMessage());
-		}
-	}
-
-	@PostMapping(value = "/products", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ResponseEntity<Product> createProductWithImages(@RequestPart("product") String productJson,
-			@RequestPart(value = "images", required = false) List<MultipartFile> images) throws Exception {
-		System.out.println("process started of saving product with image");
-		LOGGER.debug("process started of saving product with image");
-		
-		LOGGER.debug("productJSon Vaue : {}", productJson.toString());
-		
-		
-		
-
-		ObjectMapper mapper = new ObjectMapper();
-		ProductRequest request = mapper.readValue(productJson, ProductRequest.class);
-		
-		LOGGER.debug("request before sending to service Vaue : {}", request.toString());
-		LOGGER.debug("image Vaue : {}", images);
-
-		return ResponseEntity.ok(productService.createProductWithImages(request, images));
-	}
-	
 	
 	@GetMapping("/getProductById/{id}")
 	public ResponseEntity<?> getProductByID(@PathVariable Long id) {

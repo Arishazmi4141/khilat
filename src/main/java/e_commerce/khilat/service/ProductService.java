@@ -134,5 +134,55 @@ public class ProductService {
 
          return savedProduct;
      }
+     
+     @Transactional
+     public Product updateProductWithImages(
+             Long productId,
+             ProductRequest request,
+             List<MultipartFile> images,
+             List<Long> deleteImageIds
+     ) {
+
+         Product product = productRepo.findById(productId)
+                 .orElseThrow(() -> new RuntimeException("Product not found"));
+
+         // 🔹 Update basic fields
+         product.setName(request.getName());
+         product.setDescription(request.getDescription());
+         product.setPrice(request.getPrice());
+         product.setStock(request.getStock());
+         product.setIsActive(
+                 request.getIsActive() != null ? request.getIsActive() : product.getIsActive()
+         );
+         product.setTrending(
+                 request.getTrending() != null ? request.getTrending() : product.getTrending()
+         );
+
+         // 🔹 Update category (optional)
+         if (request.getCategoryId() != null) {
+             Category category = categoryRepo.findById(request.getCategoryId())
+                     .orElseThrow(() -> new RuntimeException("Category not found"));
+             product.setCategory(category);
+         }
+
+         // 🔹 Delete selected images
+         if (deleteImageIds != null && !deleteImageIds.isEmpty()) {
+             for (Long imageId : deleteImageIds) {
+                 productImageService.deleteProductImage(imageId);
+             }
+         }
+
+         // 🔹 Upload new images
+         if (images != null && !images.isEmpty()) {
+             for (MultipartFile file : images) {
+                 ProductImage image =
+                         productImageService.uploadProductImage(product.getId(), file);
+                 product.getProductImages().add(image);
+             }
+         }
+
+         return productRepo.save(product);
+     }
+
 }
 

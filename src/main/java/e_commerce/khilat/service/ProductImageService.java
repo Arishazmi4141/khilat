@@ -70,5 +70,14 @@ public class ProductImageService {
             throw new RuntimeException("Image upload failed", e);
         }
     }
+    
+    public void deleteProductImage(Long imageId) {
+        ProductImage image = productImageRepo.findById(imageId)
+                .orElseThrow(() -> new RuntimeException("Image not found"));
+
+        // ⚠️ Abhi sirf DB delete
+        productImageRepo.delete(image);
+    }
+
 
 }
