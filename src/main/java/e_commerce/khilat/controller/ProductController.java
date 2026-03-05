@@ -4,12 +4,15 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import e_commerce.khilat.service.ProductService;
+import e_commerce.khilat.util.PaginatedResponse;
 
 import org.springframework.http.MediaType;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+import e_commerce.khilat.dtomodels.ProductDto;
 import e_commerce.khilat.dtomodels.ProductRequest;
 import e_commerce.khilat.entity.Product;
 
@@ -78,7 +81,6 @@ public class ProductController {
 		}
 	}
 	
-	
 	@GetMapping("/getallproducts")
 	 public ResponseEntity<Page<Product>> getProducts(
 	            @RequestParam(required = false) String keyword,
@@ -95,7 +97,7 @@ public class ProductController {
 
 	        return ResponseEntity.ok(result);
 	    }
-	  
+	
 	
 
 }
